@@ -1,0 +1,4 @@
+﻿  Main.cpp
+c:\_main\work\projects\testingprojects\algoritm\alltests\alltests\minpoints.h(38): warning C4101: 'segments_count': unreferenced local variable
+  AllTests.vcxproj -> C:\_MAIN\Work\projects\TestingProjects\Algoritm\AllTests\x64\Debug\AllTests.exe
+  AllTests.vcxproj -> C:\_MAIN\Work\projects\TestingProjects\Algoritm\AllTests\x64\Debug\AllTests.pdb (Partial PDB)
