@@ -7,7 +7,7 @@
 struct map_hafman
 {
     char val_{ 0 };
-    int  freq_{ 0 };
+    int64_t  freq_{ 0 };
     std::shared_ptr<map_hafman> right_{ nullptr };
     std::shared_ptr<map_hafman> left_{ nullptr };
     std::shared_ptr<map_hafman> parent_{ nullptr };
@@ -15,7 +15,7 @@ struct map_hafman
     map_hafman() {}
     map_hafman(
         char val,
-        int freq,
+        int64_t freq,
         std::shared_ptr<map_hafman> right = nullptr,
         std::shared_ptr<map_hafman> left = nullptr,
         std::shared_ptr<map_hafman> parent = nullptr)
@@ -35,7 +35,7 @@ std::pair<char, std::shared_ptr<map_hafman>> extract_min(std::multimap<char, std
     if (start_it == end_it)
         return pair = std::make_pair<char, std::shared_ptr<map_hafman>>(0, nullptr);
 
-    int min = hafman_codes.begin()->second->freq_;
+    int64_t min = hafman_codes.begin()->second->freq_;
 
     std::map<char, std::shared_ptr<map_hafman>>::iterator it_last = start_it;
     for (auto it = start_it; it != end_it; ++it)
@@ -114,7 +114,7 @@ std::map<char, std::string> hafman_encode(std::string& str_to_code)
         if (min_first.first == '0')
             std::swap(min_first, min_second);
         
-        int parent_val = min_second.second->freq_ + min_first.second->freq_;
+        int64_t parent_val = min_second.second->freq_ + min_first.second->freq_;
         std::shared_ptr<map_hafman> new_parent(
             new map_hafman(0, 
                            parent_val,    
@@ -176,8 +176,8 @@ std::string hafman_decode(std::string str_to_code, std::map<std::string, std::st
 //std::string str_to_code = "";
 //std::map<std::string, std::string> letters;
 //
-//int variants = 0;
-//int length_str = 0;
+//int64_t variants = 0;
+//int64_t length_str = 0;
 //
 //std::cin >> variants;
 //std::cin >> length_str;

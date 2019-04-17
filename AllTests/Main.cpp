@@ -10,24 +10,26 @@
 #include "Hafman_simple.h"
 #include "PriorQueue.h"
 #include "BinaryFind.h"
-//#include "Multiply.h"
+#include "Invariant.h"
+#include "RecursiveMergeSort.h"
 
 using namespace std;
 
-struct S {
-	std::vector<int> a, b;
-};
-
-struct T {
-	std::array<int, 2> a, b;
-};
-
-struct A { int i, j; };
-struct B { A a1, a2; };
-int main() {
-	B b1 = { {1, 2}, {3, 4} };
-	B b2 = { 1, 2, 3, 4 }; // brace elision
-	B b3 = { {1, 2} }; // clause omission
-	B b4 = { {1}, {2} };
+std::string gap = std::string(40, '-');
+void print_vector(std::vector<int64_t>& vec)
+{
+	int index = 0;
+	std::cout << gap << std::endl;
+	std::cout << "Massive output" << std::endl;
+	for (int i : vec)
+	{
+		std::cout << "index(" << index++ << ")" << " = " << i << std::endl;
+	}
 }
+
+int main() {
+
+}
+
+
 

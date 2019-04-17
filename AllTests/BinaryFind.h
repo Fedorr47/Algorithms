@@ -2,13 +2,13 @@
 #include <vector>
 
 template <class T>
-int binarySearch(std::vector<T>& vec, T value)
+int64_t binarySearch(std::vector<T>& vec, T value)
 {
-	int left = 0;
-	int right = vec.size()-1;
+	int64_t left = 0;
+	int64_t right = vec.size()-1;
 	while(left <= right)
 	{
-		int mediane = left + (right - left) / 2;
+		int64_t mediane = left + (right - left) / 2;
 		if (vec[mediane] == value)
 		{
 			return mediane;
@@ -27,7 +27,7 @@ int binarySearch(std::vector<T>& vec, T value)
 
 //size_t number_count;
 //std::cin >> number_count;
-//std::vector<int> numbers(number_count);
+//std::vector<int64_t> numbers(number_count);
 //for (auto &number : numbers) {
 //	std::cin >> number;
 //}
@@ -36,7 +36,7 @@ int binarySearch(std::vector<T>& vec, T value)
 //size_t query_count;
 //std::cin >> query_count;
 //while (query_count-- > 0) {
-//	int number;
+//	int64_t number;
 //	std::cin >> number;
 //	std::cout << binarySearch(numbers, number) << " ";
 //}

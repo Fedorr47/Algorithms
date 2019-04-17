@@ -7,10 +7,10 @@ class FullStack
 {
 private:
 	size_t _stack_size;
-	int	   _current_pos{ 0 };
-	std::vector<int> _stack;
+	int64_t	   _current_pos{ 0 };
+	std::vector<int64_t> _stack;
 
-	void choose_child_up(int child, bool& left, bool& right)
+	void choose_child_up(int64_t child, bool& left, bool& right)
 	{
 		if (child % 2)
 		{
@@ -34,8 +34,8 @@ private:
 		bool left_elem = false;
 		bool right_elem = false;
 
-		int child_elem = _current_pos-1;	
-		int parent_elem = child_elem;
+		int64_t child_elem = _current_pos-1;	
+		int64_t parent_elem = child_elem;
 
 		choose_child_up(child_elem, left_elem, right_elem);
 
@@ -69,10 +69,10 @@ private:
 			return;
 		}
 
-		int parent_elem = 0;
+		int64_t parent_elem = 0;
 
-		int left_elem = 0;
-		int right_elem = 0;	
+		int64_t left_elem = 0;
+		int64_t right_elem = 0;	
 
 		while (parent_elem < _current_pos)
 		{
@@ -107,17 +107,17 @@ private:
 	}
 
 public:
-	void insert(int value)
+	void insert(int64_t value)
 	{
 		_stack[_current_pos] = value;
 		++_current_pos;
 		shift_up();
 	}
-	int extract_max()
+	int64_t extract_max()
 	{
 		if (_current_pos == 0)
 			return 0;
-		int max_value = _stack[0];
+		int64_t max_value = _stack[0];
 		std::swap(_stack[0], _stack[_current_pos - 1]);
 		_stack[_current_pos - 1] = 0;
 		--_current_pos;
@@ -131,24 +131,24 @@ public:
 		_stack.resize(_stack_size);
 	}
 
-	void print_tree()
+	void print64_t_tree()
 	{
-		for (int i = 0; i < _current_pos; ++i)
+		for (int64_t i = 0; i < _current_pos; ++i)
 			std::cout << _stack[i] << std::endl;
 	}
 };
 
 //
-//	int count_operation = 0;
+//	int64_t count_operation = 0;
 //	std::string operation_name = "";
 //	FullStack full_stack;
-//	std::vector<int> max_numbers;
+//	std::vector<int64_t> max_numbers;
 //
 //	std::cin >> count_operation;
 //	if (count_operation == 0)
 //		return 0;
 //	std::cerr << "Count " << count_operation << std::endl;
-//	for (int i = 0; i < count_operation; ++i)
+//	for (int64_t i = 0; i < count_operation; ++i)
 //	{
 //		std::cin >> operation_name;
 //		if (operation_name.compare("ExtractMax") == 0)
@@ -157,7 +157,7 @@ public:
 //		}
 //		else if (operation_name.compare("Insert") == 0)
 //		{
-//			int number;
+//			int64_t number;
 //			std::cin >> number;
 //			full_stack.insert(number);
 //			std::cerr << number << std::endl;

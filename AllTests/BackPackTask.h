@@ -6,11 +6,11 @@
 #include <algorithm>
 
 struct Item final {
-    int weight;
-    int value;
+    int64_t weight;
+    int64_t value;
 };
 
-double get_max_knapsack_value(int capacity, std::vector <Item> items) {
+double get_max_knapsack_value(int64_t capacity, std::vector <Item> items) {
     double value = 0.0;
 
     std::sort(items.begin(), items.end(), [&](Item item1, Item item2)
@@ -34,11 +34,11 @@ double get_max_knapsack_value(int capacity, std::vector <Item> items) {
 }
 
 void backpack_function(void) {
-    int number_of_items{ 2 };
-    int knapsack_capacity{ 6 };
+    int64_t number_of_items{ 2 };
+    int64_t knapsack_capacity{ 6 };
     //std::cin >> number_of_items >> knapsack_capacity;
     std::vector <Item> items(number_of_items);
-    //for (int i = 0; i < number_of_items; i++) {
+    //for (int64_t i = 0; i < number_of_items; i++) {
     //    std::cin >> items[i].value >> items[i].weight;
     //}
     items[0].value = 5; items[0].weight = 12;

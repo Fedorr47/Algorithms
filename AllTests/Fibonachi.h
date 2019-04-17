@@ -6,13 +6,13 @@
 
 class Fibonacci final {
 public:
-	static int get(int n) {
+	static int64_t get(int64_t n) {
 		assert(n >= 0);
 		if (n == 1)
 			return 1;
-		int fib_prev = 0;
-        int fib_this = 1;
-		for (int i = 2; i <= n; ++i)
+		int64_t fib_prev = 0;
+        int64_t fib_this = 1;
+		for (int64_t i = 2; i <= n; ++i)
 		{
 			auto new_val = fib_this + fib_prev;
             fib_prev = fib_this;
@@ -21,10 +21,10 @@ public:
 		n = fib_this;
 		return n;
 	}
-	static int get_last_digit(int n) {
+	static int64_t get_last_digit(int64_t n) {
 		assert(n >= 1);
-		std::array<int, 2> fib_array = { 0,1 };
-		for (int i = 2; i <= n; ++i)
+		std::array<int64_t, 2> fib_array = { 0,1 };
+		for (int64_t i = 2; i <= n; ++i)
 		{
 			auto new_val = ((fib_array[0] % 10) + (fib_array[1] % 10)) % 10;
 			fib_array[0] = fib_array[1];
@@ -34,19 +34,19 @@ public:
 		return n;
 	}
 
-	static int get_remainder(int64_t n, int m) {
+	static int64_t get_remainder(int64_t n, int64_t m) {
 		assert(n >= 1);
 		assert(m >= 2);
 	
-		int f_2,f_1;
+		int64_t f_2,f_1;
 		f_2 = 1;
 		f_1 = 2;
 
-		std::vector<int> pisano_vector = {0,1};
+		std::vector<int64_t> pisano_vector = {0,1};
 		do
 		{
 			pisano_vector.push_back(f_2%m);
-			int new_val = f_2%m + f_1%m;
+			int64_t new_val = f_2%m + f_1%m;
 			f_2 = f_1%m;
 			f_1 = new_val%m;	
 		} while (!((*(pisano_vector.end() - 1) == 1)

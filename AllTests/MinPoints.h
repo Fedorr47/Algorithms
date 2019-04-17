@@ -4,10 +4,10 @@
 #include <vector>
 #include <set>
 
-using Segment = std::pair<int, int>;
+using Segment = std::pair<int64_t, int64_t>;
 
-std::vector <int> get_covering_set(std::vector <Segment> segments) {
-    std::set <int> result;
+std::vector <int64_t> get_covering_set(std::vector <Segment> segments) {
+    std::set <int64_t> result;
 
     std::sort(segments.begin(), segments.end(), [&](Segment pair1, Segment pair2)
     {
@@ -31,11 +31,11 @@ std::vector <int> get_covering_set(std::vector <Segment> segments) {
             result.emplace(prev_end);
         }
     }    
-    return std::vector<int>(result.begin(), result.end());
+    return std::vector<int64_t>(result.begin(), result.end());
 }
 
-void min_points_main(void) {
-    int segments_count;
+void min_point64_ts_main(void) {
+    int64_t segments_count;
     //std::cin >> segments_count;
     //for (auto &s : segments) {
     //    std::cin >> s.first >> s.second;
@@ -51,7 +51,7 @@ void min_points_main(void) {
         segments[5] = Segment(7, 9);
 
 
-        auto points = get_covering_set(std::move(segments));
+        auto point64_ts = get_covering_set(std::move(segments));
     }
     {
         std::vector <Segment> segments(3);
@@ -60,7 +60,7 @@ void min_points_main(void) {
         segments[1] = Segment(3, 4);
         segments[2] = Segment(0, 5);
 
-        auto points = get_covering_set(std::move(segments));
+        auto point64_ts = get_covering_set(std::move(segments));
     }
     {
         std::vector <Segment> segments(4);
@@ -70,7 +70,7 @@ void min_points_main(void) {
         segments[2] = Segment(2, 7);
         segments[3] = Segment(1, 8);
 
-        auto points = get_covering_set(std::move(segments));
+        auto point64_ts = get_covering_set(std::move(segments));
     }
     {
         std::vector <Segment> segments(3);
@@ -79,7 +79,7 @@ void min_points_main(void) {
         segments[1] = Segment(2, 5);
         segments[2] = Segment(3, 6);
 
-        auto points = get_covering_set(std::move(segments));
+        auto point64_ts = get_covering_set(std::move(segments));
     }
     std::vector <Segment> segments(7);
 
@@ -91,11 +91,11 @@ void min_points_main(void) {
     segments[5] = Segment(8, 10);
     segments[6] = Segment(9, 10);
 
-    auto points = get_covering_set(std::move(segments));
+    auto point64_ts = get_covering_set(std::move(segments));
 
-    std::cout << points.size() << std::endl;
-    for (auto point : points) {
-        std::cout << point << " ";
+    std::cout << point64_ts.size() << std::endl;
+    for (auto point64_t : point64_ts) {
+        std::cout << point64_t << " ";
     }
     std::cout << std::endl;
 }

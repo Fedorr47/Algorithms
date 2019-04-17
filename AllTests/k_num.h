@@ -14,7 +14,7 @@ void num_k()
     sum = (2 + k - 1) * k / 2;
     dx = n - sum;
     std::cout << k << std::endl;
-    for (int i = 1; i < k; i++) 
+    for (int64_t i = 1; i < k; i++) 
         std::cout << i << " ";
     std::cout << k + dx << std::endl;
 }
