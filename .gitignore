@@ -188,3 +188,6 @@ version.h
 *.VC.db
 *.vcxproj
 *.vcxproj.filters
+/AllTests/x64/Debug/AllTests.log
+/AllTests/x64/Debug/AllTests.log
+/AllTests/x64/Debug/AllTests.log
