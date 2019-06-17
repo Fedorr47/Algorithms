@@ -18,10 +18,8 @@
 using namespace std;
 
 int main() {
-	long long* arr = new long long[7] {7,6,4,5,2,3,1};
-	long long invariant_count = 0;
-	merge_sort(arr, 0, 7, invariant_count);
-	std::cout << invariant_count << std::endl;
+	int* arr = new int[7] {6,4,3,2,1,7,8};
+	quickSort(arr, 0, 6);
 	delete[] arr;
 	return 0;
 }
