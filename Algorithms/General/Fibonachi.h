@@ -33,7 +33,7 @@ public:
 		n = fib_array[1];
 		return n;
 	}
-
+//https://ru.wikipedia.org/wiki/%D0%9F%D0%B5%D1%80%D0%B8%D0%BE%D0%B4_%D0%9F%D0%B8%D0%B7%D0%B0%D0%BD%D0%BE
 	static int64_t get_remainder(int64_t n, int64_t m) {
 		assert(n >= 1);
 		assert(m >= 2);
