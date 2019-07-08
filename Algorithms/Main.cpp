@@ -16,11 +16,15 @@
 #include "DivideConquer/Inverse_recursive.h"
 #include "DivideConquer/HeapSort.h"
 #include "DivideConquer/CountingSort.h"
+#include "Dynamic/LisBottomUp.h"
 
 using namespace std;
 
 int main() {
-	example_countSort();
+	int a[14]{ 3,4,5,1,2,3,4,5,6,7,8,9,11,12 };
+	int res;
+	int* list_lis;
+	res = LISBottomUp(a, 14, (int**)&list_lis);
+	std::cout << "Length of lis is - " << res << std::endl;
+	printArray(list_lis, res);
 }
-
-
