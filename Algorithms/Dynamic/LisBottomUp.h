@@ -200,15 +200,27 @@ int LIS_optimumBottomUp(std::vector<int>& v, std::vector<int>& indexes)
 	int length = 1; // always points empty slot in tail 
 
 	tail[0] = v[0];
+	int insert_index = 0;
+	bool sequence_copy = false;
 	for (size_t i = 1; i < v.size(); i++) {
 
 		// new smallest value 
 		if (v[i] < tail[0])
+		{
 			tail[0] = v[i];
+			if (length == 1)
+				if (indexes.empty())
+					indexes.emplace_back(v[i]);
+				else
+					*(indexes.end() - 1) = v[i];
+		}
 
 		// v[i] extends largest subsequence 
-		else if (v[i] > tail[length - 1])
+		else if (v[i] > tail[length - (int)1])
+		{
 			tail[length++] = v[i];
+			indexes.emplace_back(v[i]);
+		}
 
 		// v[i] will become end candidate of an existing 
 		// subsequence or Throw away larger elements in all 
@@ -217,34 +229,76 @@ int LIS_optimumBottomUp(std::vector<int>& v, std::vector<int>& indexes)
 		// appeared in one of LIS, identify the location 
 		// and replace it) 
 		else
-			tail[CeilIndex(tail, -1, length - 1, v[i])] = v[i];
+		{
+			insert_index = CeilIndex(tail, -1, length - 1, v[i]);
+			tail[insert_index] = v[i];
+			if (insert_index == (length-1))
+			{
+				*(indexes.end()-1) = v[i];
+				sequence_copy = true;
+			}
+		}
 	}
+	if (!sequence_copy)
+		std::copy(tail.begin(), tail.end(), indexes.begin());
 
 	return length;
 }
 
-int LIS_optimumBottomUp1(
-	const std::vector<int>& numbers,
-	std::vector<int>& indexes
-)
+// Binary search (note boundaries in the caller) 
+int CeilIndexDown(vector<int>& arr, vector<int>& T, int l, int r,
+	int key)
 {
- 	size_t n = numbers.size();
-	std::vector<int64_t> lis(n);
-	lis[0] = int64_t(1) << 63;
-	for (int i = 1; i < n; ++i)
-		lis[i] = INT64_MAX;
+	while (r - l > 1) {
+		int m = l + (r - l) / 2;
+		if (arr[T[m]] < key)
+			r = m;
+		else
+			l = m;
+	}
 
-	for (int i = 0; i < n; i++) {
-		int j = int(upper_bound(lis.begin(), lis.end(), numbers[i]) - lis.begin());
-		if (lis[j - 1] < numbers[i] && numbers[i] < lis[j])
-			lis[j] = numbers[i];
+	return r;
+}
+
+int LIS_optimumBottomDown(std::vector<int>& v, std::deque<int>& indexes)
+{
+	// Add boundary case, when array n is zero 
+	// Depend on smart pointers 
+	size_t n = v.size();
+	vector<int> tailIndices(n, 0); // Initialized with 0 
+	vector<int> prevIndices(n, -1); // initialized with -1 
+
+	int len = 1; // it will always point to empty location 
+	for (int i = 1; i < n; i++) {
+		if (v[i] > v[tailIndices[0]]) {
+			// new smallest value 
+			tailIndices[0] = i;
+		}
+		else if (v[i] <= v[tailIndices[len - 1]]) {
+			// arr[i] wants to extend largest subsequence 
+			prevIndices[i] = tailIndices[len - 1];
+			tailIndices[len++] = i;
+		}
+		else {
+			// arr[i] wants to be a potential condidate of 
+			// future subsequence 
+			// It will replace ceil value in tailIndices 
+			int pos = CeilIndexDown(v, tailIndices, -1,
+				len - 1, v[i]);
+
+			if (pos != 0)
+				prevIndices[i] = tailIndices[pos - 1];
+			else
+				prevIndices[i] = tailIndices[pos];
+			tailIndices[pos] = i;
+		}
 	}
-	int ans = 0;
-	for (int i = 0; i < n; ++i)
+	int i;
+	for (i = tailIndices[len - 1]; i >= 0; i = prevIndices[i])
 	{
-		ans = max(ans, lis[i]);
+		indexes.emplace_front(i+1);
 	}
-	return ans;
+	return len;
 }
 
 int LongestIncreasingSubsequenceLength(std::vector<int>& v)
@@ -273,3 +327,20 @@ int LongestIncreasingSubsequenceLength(std::vector<int>& v)
 
 	return length;
 }
+
+
+/*
+size_t number_count = 15;
+	//std::cin >> number_count;
+	std::vector<int> numbers{7,2,1,3,8,4,9,1,2,6,5,9,3,8,1};
+	//for (auto& number : numbers) {
+	//	std::cin >> number;
+	//}
+	std::deque<int> indexes;
+	std::cout << LIS_optimumBottomDown(numbers, indexes) << std::endl;
+	std::copy(
+		indexes.begin(),
+		indexes.end(),
+		std::ostream_iterator<int>(std::cout, " ")
+	);
+*/
