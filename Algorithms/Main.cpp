@@ -16,11 +16,13 @@
 #include "DivideConquer/Inverse_recursive.h"
 #include "DivideConquer/HeapSort.h"
 #include "DivideConquer/CountingSort.h"
+#include "Dynamic/LisBottomUp.h"
+#include "Dynamic/EditingDistance.h"
+#include "Dynamic/BackPack.h"
+#include <list>
 
 using namespace std;
 
-int main() {
-	example_countSort();
+int main(void) {
+	test_back_pack();
 }
-
-

@@ -3,9 +3,10 @@
     "",
     "\\Algorithms",
     "\\Algorithms\\DivideConquer",
+    "\\Algorithms\\Dynamic",
     "\\Algorithms\\General",
     "\\Algorithms\\Greedy"
   ],
-  "SelectedNode": "\\Algorithms\\DivideConquer",
+  "SelectedNode": "\\Algorithms\\Dynamic\\EditingDistance.h",
   "PreviewInSolutionExplorer": false
 }
