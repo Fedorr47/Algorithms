@@ -19,10 +19,12 @@
 #include "Dynamic/LisBottomUp.h"
 #include "Dynamic/EditingDistance.h"
 #include "Dynamic/BackPack.h"
+#include "Dynamic/Stairs.h"
+#include "Graphs/DFS.h"
 #include <list>
 
 using namespace std;
 
 int main(void) {
-	test_back_pack();
+	test_dfs();
 }

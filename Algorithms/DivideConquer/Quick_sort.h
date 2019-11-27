@@ -5,7 +5,7 @@
 	array, and places all smaller (smaller than pivot)
    to left of pivot and all greater elements to right
    of pivot */
-int partition(int arr[], int low, int high)
+char partition(char arr[], char low, char high)
 {
 	// pivot (Element to be placed at right position)
 	int pivot = arr[high];
@@ -27,7 +27,7 @@ int partition(int arr[], int low, int high)
 	return i;
 }
 
-void quickSort(int arr[], int low, int high)
+void quickSort(char arr[], char low, char high)
 {
 	if (low < high)
 	{
@@ -38,4 +38,10 @@ void quickSort(int arr[], int low, int high)
 		quickSort(arr, low, pi - 1);  // Before pi
 		quickSort(arr, pi + 1, high); // After pi
 	}
+}
+
+void test_quick_sort()
+{
+	char a[6] = { 9,3,4,5,2,7 };
+	quickSort(a, 0, 5);
 }

@@ -40,6 +40,16 @@ void min_point64_ts_main(void) {
     //for (auto &s : segments) {
     //    std::cin >> s.first >> s.second;
     //}
+	{
+		std::vector <Segment> segments(4);
+
+		segments[0] = Segment(4, 7);
+		segments[1] = Segment(1, 3);
+		segments[2] = Segment(2, 5);
+		segments[3] = Segment(5, 6);
+
+		auto point64_ts = get_covering_set(std::move(segments));
+	}
     {
         std::vector <Segment> segments(6);
 

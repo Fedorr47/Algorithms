@@ -5,8 +5,9 @@
     "\\Algorithms\\DivideConquer",
     "\\Algorithms\\Dynamic",
     "\\Algorithms\\General",
-    "\\Algorithms\\Greedy"
+    "\\Algorithms\\Greedy",
+    "\\out"
   ],
-  "SelectedNode": "\\Algorithms\\Dynamic\\EditingDistance.h",
+  "SelectedNode": "\\Algorithms\\Greedy\\MinPoints.h",
   "PreviewInSolutionExplorer": false
 }
