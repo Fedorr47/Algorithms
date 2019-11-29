@@ -16,15 +16,17 @@
 #include "DivideConquer/Inverse_recursive.h"
 #include "DivideConquer/HeapSort.h"
 #include "DivideConquer/CountingSort.h"
-#include "Dynamic/LisBottomUp.h"
+//#include "Dynamic/LisBottomUp.h"
 #include "Dynamic/EditingDistance.h"
 #include "Dynamic/BackPack.h"
 #include "Dynamic/Stairs.h"
 #include "Graphs/DFS.h"
+#include "Graphs/BFS.h"
+#include "Graphs/Eulerian_path.h"
 #include <list>
 
 using namespace std;
 
 int main(void) {
-	test_dfs();
+	test_eulerian_path();
 }

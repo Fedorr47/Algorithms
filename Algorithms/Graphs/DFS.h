@@ -1,4 +1,7 @@
+#pragma once
 #include <vector>
+
+#include "graph_utils.h"
 using namespace std;
 
 int dfs(vector<int>& visited, vector<vector<unsigned>> vertexs, unsigned v)
@@ -16,24 +19,10 @@ int dfs(vector<int>& visited, vector<vector<unsigned>> vertexs, unsigned v)
 
 void test_dfs()
 {
-	unsigned vertex_count, edges_count;
-	
-	cin >> vertex_count;
-	cin >> edges_count;
+	vector<vector<unsigned>> graph_list;
 
-	vector<vector<unsigned>> vertex_list(vertex_count);
-
-	unsigned first = 0;
-	unsigned second = 0;
-	while (edges_count) {
-		--edges_count;
-		cin >> first;
-		cin >> second;
-		--first;
-		--second;
-		vertex_list[first].push_back(second);
-		vertex_list[second].push_back(first);
-	}
+	cin_vector(cin, graph_list);
+	unsigned vertex_count = graph_list.size();
 	vector<int> visited(vertex_count, 0);
 	unsigned connected_count = 0;
 	for (unsigned v = 0; v < vertex_count; ++v)
@@ -42,7 +31,7 @@ void test_dfs()
 		{
 			++connected_count;
 			visited[v] = 1;
-			dfs(visited, vertex_list, v);
+			dfs(visited, graph_list, v);
 		}
 	}
 	cout << connected_count;
